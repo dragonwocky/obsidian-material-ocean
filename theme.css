@@ -1,0 +1,322 @@
+/* obsidian-material-ocean v0.1.0
+   by @dragonwocky */
+
+/* --- COLORS --- */
+
+body.theme-dark {
+  color-scheme: dark;
+  --highlight-mix-blend-mode: lighten;
+  --mono-rgb-0: 0, 0, 0;
+  --mono-rgb-100: 255, 255, 255;
+  --accent-h: 353;
+  --accent-s: 100%;
+  --accent-l: 65%;
+
+  --color-red-rgb: 255, 75, 97;
+  --color-red: #ff4b61;
+  --color-green-rgb: 163, 190, 140;
+  --color-green: #c3e88d;
+  --color-orange: #fde3c0;
+  --color-yellow: #ffcb6b;
+  --color-cyan: #89ddff;
+  --color-blue: #82aaff;
+  --color-purple: #c792ea;
+  --color-pink: #ffc0cb;
+  --color-base-00: #0f111a; /* main editor window */
+  --color-base-10: #0b0d13; /* code blocks */
+  --color-base-20: #090b10; /* top unselected unfocused nav */
+  --color-base-25: rgb(9, 11, 16);
+  --color-base-30: #090b10; /* dividing lines */
+  --color-base-35: #15171c;
+  --color-base-40: #15171c;
+  --color-base-50: #a1a8b1;
+  --color-base-60: #a1a8b1;
+  --color-base-70: #bec6cf;
+  --color-base-100: #dadada;
+  --blockquote-color: var(--text-faint);
+
+  /* use accent for headings instead of links */
+  --h1-color: var(--text-accent);
+  --h2-color: var(--text-accent);
+  --h3-color: var(--text-accent);
+  --h4-color: var(--text-accent);
+  --h5-color: var(--text-accent);
+  --h6-color: var(--text-accent);
+  --link-color: var(--text-normal);
+  --link-color-hover: var(--text-faint);
+  --link-external-color: var(--text-normal);
+  --link-external-color-hover: var(--text-faint);
+  --link-unresolved-color: var(--text-normal);
+  --link-unresolved-decoration-color: var(--text-faint);
+  --list-marker-color-collapsed: var(--text-faint);
+  --collapse-icon-color-collapsed: var(--text-faint);
+
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: #00010a;
+  --scrollbar-active-thumb-bg: #ff4151;
+  --background-modifier-hover: var(--color-base-35);
+  --table-header-background: var(--background-modifier-hover);
+}
+
+/* --- LAYOUT --- */
+
+body {
+  /* even out tag padding (>0.23em pushes text down over lower pad) */
+  --tag-padding-y: 0.23em;
+}
+
+/* reading view: tighten blockquotes */
+.markdown-reading-view blockquote > p + blockquote {
+  margin-top: -0.5em;
+}
+
+/* round images */
+.markdown-reading-view img,
+.markdown-source-view img {
+  border-radius: 4px;
+}
+
+/* reading view: tighten code block line height to match source view */
+.markdown-reading-view code[class*="language-"] {
+  line-height: var(--line-height-tight);
+}
+/* reading view: horizontally scrollable code blocks */
+.markdown-reading-view pre[class*="language-"] {
+  overflow-x: scroll;
+  white-space: pre;
+}
+.markdown-reading-view code[class*="language-"] {
+  overflow: unset;
+  white-space: pre;
+}
+/* source view: horizontally scrollable code lines */
+body:not(.is-mobile) .markdown-source-view .HyperMD-codeblock:not(.HyperMD-codeblock-begin) {
+  overflow: auto;
+  white-space: pre;
+}
+/* source view: pads code blocks to leave space for language flair */
+.markdown-source-view.mod-cm6 .HyperMD-codeblock-begin {
+  padding-top: 0.75em;
+}
+
+/* centre and line up checkboxes */
+.markdown-reading-view .task-list-item-checkbox,
+.markdown-source-view.mod-cm6 .task-list-item-checkbox {
+  top: 1.5px;
+  vertical-align: unset;
+}
+.markdown-source-view .task-list-item-checkbox {
+  margin-right: 3px;
+}
+.markdown-source-view .task-list-item-checkbox:checked:after {
+  top: -0.5px;
+  left: -0.5px;
+}
+/* reading view: remove checkbox indent */
+.markdown-reading-view .contains-task-list {
+  padding-inline-start: 1.4em;
+}
+
+/* full-width tables */
+.markdown-rendered table {
+  width: 100%;
+}
+
+/* --- ICONS --- */
+
+body {
+  --feather-minus: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
+  --feather-maximize: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3'%3E%3C/path%3E%3C/svg%3E");
+  --feather-x: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
+}
+
+/* replaces the window control buttons with feathericons
+   (see https://antfu.me/posts/icons-in-pure-css) */
+.mod-linux .titlebar-button,
+.mod-windows .titlebar-button {
+  padding: 0 12px;
+}
+.titlebar-button svg {
+  -webkit-mask-size: cover;
+  background-color: var(--icon-color);
+  color: transparent;
+  width: 1em;
+  height: 1em;
+}
+.titlebar-button.mod-minimize svg {
+  -webkit-mask-image: var(--feather-minus);
+}
+.titlebar-button.mod-maximize svg {
+  -webkit-mask-image: var(--feather-maximize);
+}
+.titlebar-button.mod-close svg {
+  -webkit-mask-image: var(--feather-x);
+}
+
+/* checkbox icon: ' ' = incomplete, 'x' = complete */
+.markdown-source-view .task-list-item-checkbox[data-task=""],
+.markdown-source-view .task-list-item-checkbox[data-task=" "],
+.markdown-source-view .task-list-item-checkbox[data-task="x"],
+.markdown-source-view .task-list-item-checkbox[data-task="X"],
+.markdown-reading-view .task-list-item[data-task=""] input[type="checkbox"],
+.markdown-reading-view .task-list-item[data-task=" "] input[type="checkbox"],
+.markdown-reading-view .task-list-item[data-task="x"] input[type="checkbox"],
+.markdown-reading-view .task-list-item[data-task="X"] input[type="checkbox"] {
+  border-radius: 100%;
+}
+.markdown-source-view .HyperMD-task-line[data-task="x"],
+.markdown-source-view .HyperMD-task-line[data-task="X"],
+.markdown-reading-view .task-list-item[data-task="x"],
+.markdown-reading-view .task-list-item[data-task="X"] {
+  text-decoration: none !important;
+  color: var(--text-faint) !important;
+}
+/* checkbox: '/' = incomplete */
+.markdown-source-view .task-list-item-checkbox[data-task="/"]:checked,
+.markdown-reading-view .task-list-item[data-task="/"] input[type="checkbox"]:checked {
+  background-color: transparent;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.markdown-source-view .task-list-item-checkbox[data-task="/"]:checked:after,
+.markdown-reading-view .task-list-item[data-task="/"] input[type="checkbox"]:checked:after {
+  -webkit-mask-image: none;
+  background-color: var(--checkbox-color);
+  width: 50%;
+}
+/* custom checkbox icon: '-' = cancelled */
+.markdown-source-view .HyperMD-task-line[data-task="-"],
+.markdown-reading-view .task-list-item[data-task="-"] {
+  text-decoration: line-through;
+  text-decoration-color: var(--text-muted);
+  color: var(--text-faint);
+}
+.markdown-source-view .task-list-item-checkbox[data-task="-"]:checked,
+.markdown-reading-view .task-list-item[data-task="-"] input[type="checkbox"]:checked {
+  background-color: var(--text-faint);
+  -webkit-mask-image: var(--feather-minus);
+  -webkit-mask-size: cover;
+}
+.markdown-source-view .task-list-item-checkbox[data-task="-"]:checked:after,
+.markdown-reading-view .task-list-item[data-task="-"] input[type="checkbox"]:checked:after {
+  background: transparent;
+}
+
+/* --- SYNTAX HIGHLIGHTING --- */
+
+code[class*="language-"],
+.token.tag,
+.token.parameter,
+.token.selector,
+.token.hexcode,
+.token.attr-name,
+.token.variable,
+.cm-variable-2,
+.cm-s-obsidian span.cm-error,
+.cm-property,
+.cm-variable,
+.cm-atom {
+  color: var(--color-red);
+}
+.token.boolean,
+.token.number,
+.token.unit,
+.token.constant,
+.token.symbol,
+.token.deleted,
+.cm-number,
+.cm-property.cm-string {
+  color: var(--color-orange);
+}
+.token.string,
+.token.char,
+.token.selector .id,
+.token.attr-value,
+.token.builtin,
+.token.inserted,
+.cm-builtin,
+.cm-hmd-codeblock.cm-string {
+  color: var(--color-green);
+}
+.token.operator,
+.token.entity,
+.token.url,
+.token.pseudo-class,
+.token.pseudo-element,
+.language-css .token.string,
+.style .token.string,
+.cm-operator,
+.cm-variable-3 {
+  color: var(--color-cyan);
+}
+.token.atrule,
+.token.keyword,
+.cm-keyword {
+  color: var(--color-purple);
+}
+.cm-def,
+.token.function,
+.token.macro.property,
+.token.property-access,
+.token.property,
+.cm-callee,
+.cm-property,
+.cm-string-2 {
+  color: var(--color-blue);
+}
+.token.selector .class,
+.cm-qualifier,
+.token.class-name,
+.cm-type {
+  color: var(--color-yellow);
+}
+.token.regex,
+.token.important {
+  color: var(--color-purple);
+}
+.token.operator,
+.token.selector .combinator {
+  color: var(--code-normal);
+}
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+.token.entity {
+  cursor: help;
+}
+
+/* --- PLUGINS --- */
+
+/* obsidian-calendar */
+.adjacent-month {
+  opacity: 0.5 !important;
+}
+
+/* obsidian-dictionary */
+.dictionary-view-content.view-content {
+  padding-top: 0;
+}
+.dictionary-view-content .nav-buttons-container {
+  padding: var(--size-4-2) var(--size-4-2) var(--size-4-3) var(--size-4-2);
+}
+.dictionary-view-content .nav-action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--size-2-2) var(--size-2-3);
+  border-radius: var(--clickable-icon-radius);
+  color: var(--icon-color);
+  opacity: var(--icon-opacity);
+  transition: opacity 0.15s ease-in-out;
+}
+@media (hover: hover) {
+  .dictionary-view-content .nav-action-button:hover {
+    opacity: var(--icon-opacity-hover);
+    color: var(--icon-color-hover);
+    background-color: var(--background-modifier-hover);
+  }
+}
