@@ -1,9 +1,10 @@
-/* obsidian-material-ocean v0.2.0
+/* obsidian-material-ocean v0.2.1
    by @dragonwocky */
 
 /* --- COLORS --- */
 
-body.theme-dark {
+body.theme-dark,
+body.is-mobile.theme-dark {
   color-scheme: dark;
   --highlight-mix-blend-mode: lighten;
   --mono-rgb-0: 0, 0, 0;
@@ -57,6 +58,10 @@ body.theme-dark {
   --background-modifier-hover: var(--color-base-35);
   --table-header-background: var(--background-modifier-hover);
   --table-header-background-hover: var(--background-modifier-hover);
+  --interactive-normal: var(--color-base-30);
+  --titlebar-background: var(--background-secondary);
+  --titlebar-background-focused: var(--background-secondary);
+  --modal-background: var(--background-primary);
 }
 
 /* --- LAYOUT --- */
@@ -66,9 +71,28 @@ body {
   --tag-padding-y: 0.23em;
 }
 
-/* reading view: tighten blockquotes */
+/* reading view: tighten spaces between lines */
 .markdown-reading-view blockquote > p + blockquote {
   margin-top: -0.5em;
+}
+.markdown-preview-section > :nth-child(3) > * {
+  margin-top: 0 !important;
+}
+.markdown-reading-view h1,
+.markdown-reading-view h2,
+.markdown-reading-view h3,
+.markdown-reading-view h4,
+.markdown-reading-view h5,
+.markdown-reading-view h6 {
+  margin-block-start: 1.5em;
+  margin-block-end: 0;
+}
+.markdown-reading-view div > p {
+  margin-block-start: 0;
+  margin-block-end: 1.5em;
+}
+.markdown-reading-view li > p:last-child {
+  margin-block-end: 0;
 }
 
 /* round images */
@@ -113,8 +137,13 @@ body:not(.is-mobile) .markdown-source-view .HyperMD-codeblock:not(.HyperMD-codeb
   top: -0.5px;
   left: -0.5px;
 }
-/* reading view: remove checkbox indent */
-.markdown-reading-view .contains-task-list {
+
+/* reading view: remove top-level list indent */
+.markdown-preview-section > div > ol,
+.markdown-preview-section > div > .has-list-bullet:not(.contains-task-list) {
+  padding-inline-start: 1em;
+}
+.markdown-preview-section > div > .contains-task-list {
   padding-inline-start: 1.4em;
 }
 
@@ -156,6 +185,7 @@ body {
 }
 
 /* checkbox icon: ' ' = incomplete, 'x' = complete */
+
 .markdown-source-view .task-list-item-checkbox[data-task=""],
 .markdown-source-view .task-list-item-checkbox[data-task=" "],
 .markdown-source-view .task-list-item-checkbox[data-task="x"],
@@ -427,16 +457,38 @@ label[for="recurring"] {
   border-radius: var(--input-radius);
   border: 0;
 }
-.modal-content form > p {
+.modal-content form > p:not([style^="display: flex;"]) {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.6em;
-}
-.modal-content form > p:nth-last-child(2) {
-  width: min-content;
 }
 .modal-content form > p:nth-last-child(2) input[type="date"] {
   min-width: 9.6em;
   margin-left: -0.3em;
   margin-right: 0.6em;
+}
+/* obsidian-full-calendar: modal close + open note buttons */
+body:not(.is-mobile) .modal-close-button {
+  top: unset;
+}
+body:not(.is-mobile) .modal-close-button ~ .modal-content {
+  margin-top: -1em;
+}
+body:not(.is-mobile) .modal-close-button ~ .modal-content > div > p[style="float: right;"] {
+  margin-top: 4em;
+}
+.is-mobile .modal-content {
+  padding: var(--size-4-1) var(--size-4-3);
+}
+.is-mobile .modal-close-button {
+  top: 24px;
+  z-index: 1;
+}
+.is-mobile .modal-close-button ~ .modal-content > div > p[style="float: right;"] {
+  float: unset !important;
+  margin-bottom: 0;
+}
+.is-phone .modal-content button {
+  width: auto;
 }
