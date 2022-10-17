@@ -22,11 +22,9 @@ and quality of life editor improvements.
 - Tables now expand to the full width of the page.
 - Line heights and element margins/padding/positioning have been
   adjusted to handle layout inconsistencies and off-centre elements.
-- Code blocks are now horizontally scrollable and code is no longer
-  wrapped onto the next line.
-
-  > _Note: in reading mode, this applies to full code blocks. In source mode, only individual lines are horizontally scrollable due to architectural limitations of the editor._
-
+- Code will scroll horizontally instead of wrapping onto the next line.
+  In reading mode, whole blocks can be scrolled. In source mode, lines
+  are instead individually scrollable due to architectural limitations.
 - The default window minimize/maximise/close icons have been replaced with
   icons from the [Feather Icons](https://feathericons.com/) set, to match
   the smoother designs of the other in-app icons.
@@ -38,7 +36,8 @@ and quality of life editor improvements.
 
 Most Obsidian plugins should work with this theme out of the box.
 Additional styling has been provided specifically for the
-[Calendar](https://github.com/liamcain/obsidian-calendar-plugin)
+[Calendar](https://github.com/liamcain/obsidian-calendar-plugin),
+[Full Calendar](https://github.com/davish/obsidian-full-calendar),
 and [Dictionary](https://github.com/phibr0/obsidian-dictionary) plugins
 to ensure compatibility.
 

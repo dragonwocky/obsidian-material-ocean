@@ -1,4 +1,4 @@
-/* obsidian-material-ocean v0.1.0
+/* obsidian-material-ocean v0.2.0
    by @dragonwocky */
 
 /* --- COLORS --- */
@@ -8,34 +8,36 @@ body.theme-dark {
   --highlight-mix-blend-mode: lighten;
   --mono-rgb-0: 0, 0, 0;
   --mono-rgb-100: 255, 255, 255;
-  --accent-h: 353;
+  --accent-h: 354;
   --accent-s: 100%;
-  --accent-l: 65%;
+  --accent-l: 64%;
 
-  --color-red-rgb: 255, 75, 97;
-  --color-red: #ff4b61;
+  --color-red-rgb: 255, 71, 90;
+  --color-red: rgb(var(--color-red-rgb));
   --color-green-rgb: 163, 190, 140;
-  --color-green: #c3e88d;
+  --color-green: rgb(var(--color-green-rgb));
   --color-orange: #fde3c0;
   --color-yellow: #ffcb6b;
   --color-cyan: #89ddff;
   --color-blue: #82aaff;
   --color-purple: #c792ea;
   --color-pink: #ffc0cb;
-  --color-base-00: #0f111a; /* main editor window */
+  --color-base-00: #0f111a; /* editor */
   --color-base-10: #0b0d13; /* code blocks */
-  --color-base-20: #090b10; /* top unselected unfocused nav */
-  --color-base-25: rgb(9, 11, 16);
-  --color-base-30: #090b10; /* dividing lines */
-  --color-base-35: #15171c;
-  --color-base-40: #15171c;
-  --color-base-50: #a1a8b1;
-  --color-base-60: #a1a8b1;
-  --color-base-70: #bec6cf;
-  --color-base-100: #dadada;
-  --blockquote-color: var(--text-faint);
+  --color-base-20: #090b10; /* unfocused nav + sidebar */
+  --color-base-25: #0b0d13; /* inputs */
+  --color-base-30: #090b10; /* focused nav + dividing lines*/
+  --color-base-35: #11131e; /* hovered + selected buttons */
+  --color-base-40: #0b0c13; /* box-shadows */
+  --color-base-50: #697086; /* text-faint */
+  --color-base-60: #697086;
+  --color-base-70: #9093a2; /* text-muted */
+  --color-base-100: #b6b7be; /* text-normal */
+  --blockquote-color: var(--text-muted);
 
-  /* use accent for headings instead of links */
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: #00010a;
+  --scrollbar-active-thumb-bg: var(--color-red);
   --h1-color: var(--text-accent);
   --h2-color: var(--text-accent);
   --h3-color: var(--text-accent);
@@ -43,19 +45,18 @@ body.theme-dark {
   --h5-color: var(--text-accent);
   --h6-color: var(--text-accent);
   --link-color: var(--text-normal);
-  --link-color-hover: var(--text-faint);
+  --link-color-hover: var(--text-muted);
   --link-external-color: var(--text-normal);
-  --link-external-color-hover: var(--text-faint);
+  --link-external-color-hover: var(--text-muted);
   --link-unresolved-color: var(--text-normal);
-  --link-unresolved-decoration-color: var(--text-faint);
-  --list-marker-color-collapsed: var(--text-faint);
+  --link-unresolved-decoration-color: var(--text-muted);
+  --list-marker-color: var(--text-muted);
+  --list-marker-color-collapsed: var(--text-muted);
+  --collapse-icon-color: var(--text-faint);
   --collapse-icon-color-collapsed: var(--text-faint);
-
-  --scrollbar-bg: transparent;
-  --scrollbar-thumb-bg: #00010a;
-  --scrollbar-active-thumb-bg: #ff4151;
   --background-modifier-hover: var(--color-base-35);
   --table-header-background: var(--background-modifier-hover);
+  --table-header-background-hover: var(--background-modifier-hover);
 }
 
 /* --- LAYOUT --- */
@@ -128,6 +129,7 @@ body {
   --feather-minus: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
   --feather-maximize: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3'%3E%3C/path%3E%3C/svg%3E");
   --feather-x: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
+  --lucide-calendar-days: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3Cpath d='M8 14h.01'%3E%3C/path%3E%3Cpath d='M12 14h.01'%3E%3C/path%3E%3Cpath d='M16 14h.01'%3E%3C/path%3E%3Cpath d='M8 18h.01'%3E%3C/path%3E%3Cpath d='M12 18h.01'%3E%3C/path%3E%3Cpath d='M16 18h.01'%3E%3C/path%3E%3C/svg%3E");
 }
 
 /* replaces the window control buttons with feathericons
@@ -169,7 +171,7 @@ body {
 .markdown-reading-view .task-list-item[data-task="x"],
 .markdown-reading-view .task-list-item[data-task="X"] {
   text-decoration: none !important;
-  color: var(--text-faint) !important;
+  color: var(--text-muted) !important;
 }
 /* checkbox: '/' = incomplete */
 .markdown-source-view .task-list-item-checkbox[data-task="/"]:checked,
@@ -193,7 +195,7 @@ body {
 }
 .markdown-source-view .task-list-item-checkbox[data-task="-"]:checked,
 .markdown-reading-view .task-list-item[data-task="-"] input[type="checkbox"]:checked {
-  background-color: var(--text-faint);
+  background-color: var(--text-muted);
   -webkit-mask-image: var(--feather-minus);
   -webkit-mask-size: cover;
 }
@@ -292,8 +294,9 @@ code[class*="language-"],
 /* --- PLUGINS --- */
 
 /* obsidian-calendar */
-.adjacent-month {
-  opacity: 0.5 !important;
+.calendar .day.adjacent-month {
+  opacity: 1;
+  color: var(--text-faint);
 }
 
 /* obsidian-dictionary */
@@ -319,4 +322,121 @@ code[class*="language-"],
     color: var(--icon-color-hover);
     background-color: var(--background-modifier-hover);
   }
+}
+
+/* obsidian-full-calendar: replace file icon with calendar icon */
+[data-type="full-calendar-view"] .workspace-tab-header-inner-icon svg {
+  -webkit-mask-size: cover;
+  -webkit-mask-image: var(--lucide-calendar-days);
+  background-color: var(--icon-color);
+  color: transparent;
+  width: 1em;
+  height: 1em;
+}
+/* obsidian-full-calendar: adjust padding/colours/font sizes */
+.fc {
+  --fc-now-indicator-color: var(--color-accent);
+  --fc-small-font-size: var(--font-ui-small);
+  --fc-border-color: var(--interactive-normal);
+  --fc-border-color: var(--interactive-normal);
+}
+.fc table {
+  font-size: var(--font-ui-small);
+}
+.fc .fc-scrollgrid {
+  border-radius: 4px;
+}
+.fc .fc-toolbar-title {
+  font-size: var(--font-ui-large);
+}
+.fc .fc-col-header-cell-cushion {
+  text-decoration: none;
+  padding: var(--size-2-3) var(--size-4-1);
+}
+.fc .fc-list-day-text,
+.fc .fc-list-day-side-text,
+.fc .fc-daygrid-day-number {
+  text-decoration: none;
+}
+.fc .fc-daygrid-day-frame {
+  padding: var(--size-2-1);
+}
+.fc .fc-button {
+  text-transform: capitalize;
+  font-size: var(--font-ui-medium);
+  padding: var(--size-4-1) var(--size-4-3);
+}
+.fc .fc-button-primary:not(.fc-button-active) {
+  box-shadow: var(--input-shadow);
+  --input-shadow: inset 0 0.5px 0.75px 0.5px rgba(255, 255, 255, 0.09),
+    0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 1px 1.5px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 0 0 0 transparent;
+}
+.fc .fc-button:disabled {
+  opacity: 1;
+  color: var(--text-muted);
+}
+.fc .fc-button-primary:focus,
+.fc .fc-button-primary:active {
+  color: var(--text-on-accent) !important;
+  box-shadow: 0 0 0 0.2rem var(--color-accent);
+}
+.fc .fc-button-primary:not(:disabled):active:focus,
+.fc .fc-button-primary:not(:disabled).fc-button-active:focus {
+  box-shadow: none;
+}
+/* obsidian-full-calendar: new event inputs + checkboxes */
+label[for="allDay"],
+label[for="recurring"] {
+  margin-right: 3px;
+}
+#allDay[type="checkbox"],
+#recurring[type="checkbox"] {
+  top: 2px;
+  border-radius: 100%;
+}
+#allDay[type="checkbox"]:checked:after,
+#recurring[type="checkbox"]:checked:after {
+  top: -0.5px;
+  left: -0.5px;
+}
+.modal-content form div > button[style^="margin-left: 0.25rem;"]:first-child {
+  margin-left: 0 !important;
+}
+.modal-content form select#calendar {
+  padding: 0 0.8em;
+}
+#date[type="date"],
+#startDate[type="date"],
+#endDate[type="date"],
+#startTime[type="time"],
+#endTime[type="time"] {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: var(--font-ui-small);
+  font-weight: var(--input-font-weight);
+  line-height: var(--line-height-tight);
+  height: var(--input-height);
+  padding: 0 0.8em;
+  max-width: 100%;
+  background-color: var(--interactive-normal);
+  box-shadow: var(--input-shadow);
+  color: var(--text-normal);
+  border-radius: var(--input-radius);
+  border: 0;
+}
+.modal-content form > p {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+.modal-content form > p:nth-last-child(2) {
+  width: min-content;
+}
+.modal-content form > p:nth-last-child(2) input[type="date"] {
+  min-width: 9.6em;
+  margin-left: -0.3em;
+  margin-right: 0.6em;
 }
