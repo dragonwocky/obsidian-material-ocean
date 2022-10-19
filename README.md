@@ -1,11 +1,9 @@
-<img src="./screenshot-red.png" style="width:50%;">
-<img src="./screenshot-blue.png" style="width:50%;float:right;">
+<img src="./screenshot-red.png" style="width:50%;float:left;"><img src="./screenshot-blue.png" style="width:50%;float:right;">
 
 **Material Ocean** is an [Obsidian](https://obsidian.md/) dark theme that combines
-navy blue undertones with pinky red highlights for a pleasant visual experience.
-
-The recommended accent colours for this theme are either `#ff475a`
-(pinky red, the default) or `#82aaff` (sky blue).
+navy blue undertones with pastel highlights for a pleasant visual experience. The
+recommended accent colours for this theme are either `#ff475a` (pinky red, the default)
+or `#82aaff` (sky blue).
 
 This theme is also available for use with [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme), [Notion](https://notion-enhancer.github.io), and [a variety of other apps and desktop environments](https://github.com/material-ocean/Material-Ocean).
 
