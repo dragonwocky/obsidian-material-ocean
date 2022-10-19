@@ -1,6 +1,39 @@
 /* obsidian-material-ocean v0.3.0
    by @dragonwocky */
 
+/* @plugins
+core:
+- audio-recorder
+- backlink
+- command-palette
+- daily-notes
+- editor-status
+- file-explorer
+- file-recovery
+- global-search
+- graph-view
+- markdown-importer
+- note-composer
+- open-with-default-app
+- outgoing-links
+- outline
+- page-preview
+- random-note
+- slash-commands
+- starred
+- switcher
+- tag-pane
+- templates
+- word-count
+- workspaces
+- zk-prefixer
+
+community:
+- calendar
+- obsidian-full-calendar
+- obsidian-dictionary-plugin
+*/
+
 /* --- COLORS --- */
 
 body.theme-dark,
@@ -411,6 +444,9 @@ code[class*="language-"],
 #calendar-container .day.adjacent-month {
   opacity: 1;
   color: var(--text-faint);
+}
+#calendar-container .day.has-note.active .dot.filled {
+  fill: var(--text-on-accent);
 }
 
 /* plugin: obsidian-dictionary */
