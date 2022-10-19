@@ -1,7 +1,11 @@
-![](demo.png)
+<img src="./screenshot-red.png" style="width:50%;">
+<img src="./screenshot-blue.png" style="width:50%;float:right;">
 
 **Material Ocean** is an [Obsidian](https://obsidian.md/) dark theme that combines
 navy blue undertones with pinky red highlights for a pleasant visual experience.
+
+The recommended accent colours for this theme are either `#ff475a`
+(pinky red, the default) or `#82aaff` (sky blue).
 
 This theme is also available for use with [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme), [Notion](https://notion-enhancer.github.io), and [a variety of other apps and desktop environments](https://github.com/material-ocean/Material-Ocean).
 
@@ -16,17 +20,19 @@ This theme is also available for use with [Visual Studio Code](https://marketpla
 ## Features
 
 As well as recolouring Obsidian's interface,
-the **Material Ocean** theme comes with a number of layout tweaks
-and quality of life editor improvements.
+the **Material Ocean** theme comes with a number of layout and typography
+tweaks and quality of life editor improvements.
 
-- Tables now expand to the full width of the page.
+- Headings are underlined.
+- Tables now expand to the full width of the page and have a
+  shaded header row.
 - Line heights and element margins/padding/positioning have been
-  adjusted to handle layout inconsistencies and off-centre elements.
+  adjusted to counteract layout inconsistencies and off-centre elements.
 - Code will scroll horizontally instead of wrapping onto the next line.
   In reading mode, whole blocks can be scrolled. In source mode, lines
   are instead individually scrollable due to architectural limitations.
 - The default window minimize/maximise/close icons have been replaced with
-  icons from the [Feather Icons](https://feathericons.com/) set, to match
+  icons from the [Lucide](https://lucide.dev/) icons toolkit, to match
   the smoother designs of the other in-app icons.
 - The following alternative checkbox styles have been added:
   - `- [/]` represents an incomplete task with a half-filled circle.
@@ -39,7 +45,7 @@ Additional styling has been provided specifically for the
 [Calendar](https://github.com/liamcain/obsidian-calendar-plugin),
 [Full Calendar](https://github.com/davish/obsidian-full-calendar),
 and [Dictionary](https://github.com/phibr0/obsidian-dictionary) plugins
-to ensure compatibility.
+to ensure compatibility and fix minor display issues.
 
 ## Disclaimer
 
