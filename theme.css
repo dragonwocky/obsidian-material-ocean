@@ -1,4 +1,4 @@
-/* obsidian-material-ocean v0.3.0
+/* obsidian-material-ocean v0.3.1
    by @dragonwocky */
 
 /* @plugins
@@ -172,6 +172,11 @@ body.is-mobile.theme-dark {
 :is(.mod-linux, .mod-windows) .titlebar-button.mod-close svg {
   -webkit-mask-image: var(--lucide-x);
 }
+@media (hover: hover) {
+  :is(.mod-linux, .mod-windows) .titlebar-button.mod-close:hover svg {
+    background-color: var(--text-on-accent);
+  }
+}
 
 /* typography: consistent line width & tightened line heights/spacing */
 .markdown-rendered .inline-title {
@@ -314,7 +319,7 @@ body.is-mobile.theme-dark {
   border-radius: 100%;
   overflow: hidden;
 }
-.HyperMD-task-line.task-list-item-checkbox[data-task="/"]:checked:after,
+.HyperMD-task-line .task-list-item-checkbox[data-task="/"]:checked:after,
 .markdown-rendered .task-list-item[data-task="/"] input[type="checkbox"]:checked:after {
   -webkit-mask-image: none;
   background-color: var(--checkbox-color);
