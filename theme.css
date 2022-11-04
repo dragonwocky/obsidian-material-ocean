@@ -1,4 +1,4 @@
-/* obsidian-material-ocean v0.3.1
+/* obsidian-material-ocean v0.3.2
    by @dragonwocky */
 
 /* @plugins
@@ -137,8 +137,10 @@ body.is-mobile.theme-dark {
 .mod-left-split .mod-top-left-space .workspace-tab-header-container {
   border-color: transparent;
 }
-.mod-left-split .mod-top-left-space .workspace-leaf {
+.mod-left-split .mod-top-left-space {
   margin-top: -1px;
+}
+.mod-left-split .mod-top-left-space .workspace-leaf {
   border-top: var(--tab-outline-width) solid var(--tab-outline-color);
   border-left: var(--tab-outline-width) solid var(--tab-outline-color);
   border-top-left-radius: var(--radius-m);
@@ -278,19 +280,13 @@ body.is-mobile.theme-dark {
 }
 
 /* fix: centre and line up checkboxes */
-.markdown-rendered .task-list-item-checkbox,
-.mod-cm6 .HyperMD-task-line .task-list-item-checkbox {
+.markdown-source-view.mod-cm6 .task-list-label .task-list-item-checkbox {
+  margin-left: 0;
+  margin-top: 0;
+}
+.markdown-rendered .task-list-item-checkbox {
   top: 1.5px;
-  vertical-align: unset;
 }
-.HyperMD-task-line .task-list-item-checkbox {
-  margin-right: 3px;
-}
-.HyperMD-task-line .task-list-item-checkbox:checked:after {
-  top: -0.5px;
-  left: -0.5px;
-}
-
 /* tweak: rounded checkboxes */
 .HyperMD-task-line .task-list-item-checkbox[data-task=""],
 .HyperMD-task-line .task-list-item-checkbox[data-task=" "],
@@ -544,25 +540,15 @@ code[class*="language-"],
   box-shadow: none;
 }
 /* fix: style new event inputs + checkboxes */
-label[for="allDay"],
-label[for="recurring"] {
+label:is([for="allDay"], [for="recurring"]) {
   margin-right: 3px;
 }
-#allDay[type="checkbox"],
-#recurring[type="checkbox"] {
-  top: 2px;
+:is(#allDay, #recurring)[type="checkbox"] {
   border-radius: 100%;
+  top: 1.5px;
 }
-#allDay[type="checkbox"]:checked:after,
-#recurring[type="checkbox"]:checked:after {
-  top: -0.5px;
-  left: -0.5px;
-}
-#date[type="date"],
-#startDate[type="date"],
-#endDate[type="date"],
-#startTime[type="time"],
-#endTime[type="time"] {
+:is(#date, #startDate, #endDate)[type="date"],
+:is(#startTime, #endTime)[type="time"] {
   appearance: none;
   -webkit-appearance: none;
   box-sizing: border-box;
@@ -571,52 +557,44 @@ label[for="recurring"] {
   font-weight: var(--input-font-weight);
   line-height: var(--line-height-tight);
   height: var(--input-height);
-  padding: 0 0.8em;
   max-width: 100%;
+  padding: 0 0.8em;
+  margin: 0.4em 0;
   background-color: var(--interactive-normal);
   box-shadow: var(--input-shadow);
   color: var(--text-normal);
   border-radius: var(--input-radius);
   border: 0;
 }
-[class="modal"] form div > button[style^="margin-left: 0.25rem;"]:first-child {
+:is(#startTime, #endTime)[type="time"] {
+  width: 9em;
+}
+:is(#date, #startDate, #endDate)[type="date"] {
+  width: 9.6em;
+}
+:is(#startDate, #endDate)[type="date"],
+:is(#date[type="date"], :is(#startTime, #endTime)[type="time"]):not(:first-child) {
+  margin-inline-start: 0.6em;
+}
+:is(#date, #startDate, #endDate)[type="date"]:not(:last-child),
+:is(#startTime, #endTime)[type="time"]:not(:last-child) {
+  margin-inline-end: 0.6em;
+}
+[class="modal"]
+  .modal-content
+  > form
+  > div
+  > button[style^="margin-left: 0.25rem;"]:first-child {
   margin-left: 0 !important;
 }
-[class="modal"] form select#calendar {
+[class="modal"] .modal-content > form select#calendar {
   padding: 0 0.8em;
 }
-[class="modal"] form > p:not([style^="display: flex;"]) {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.6em;
-}
-[class="modal"] form > p:nth-last-child(2) input[type="date"] {
-  min-width: 9.6em;
-  margin-left: -0.3em;
-  margin-right: 0.6em;
-}
-/* fix: reposition modal close + open note buttons */
-body:not(.is-mobile) [class="modal"] .modal-content {
-  margin-top: -1em;
-}
-body:not(.is-mobile) [class="modal"] .modal-content > div > p[style="float: right;"] {
-  margin-top: 4em;
-}
-body:not(.is-mobile) [class="modal"] .modal-close-button {
-  top: unset;
-}
-.is-mobile [class="modal"] .modal-content {
-  padding: var(--size-4-1) var(--size-4-3);
-}
-.is-phone [class="modal"] .modal-content button {
-  width: auto;
-}
-.is-mobile [class="modal"] .modal-content > div > p[style="float: right;"] {
+/* fix: clickable close button on mobile */
+.is-mobile [class="modal"] .modal-content > div:first-child > p[style="float: right;"] {
   float: unset !important;
   margin-bottom: 0;
 }
 .is-mobile [class="modal"] .modal-close-button {
-  top: var(--size-4-6);
-  z-index: 1;
+  z-index: 999;
 }
