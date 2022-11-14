@@ -1,4 +1,4 @@
-/* obsidian-material-ocean v0.3.2
+/* obsidian-material-ocean v0.3.3
    by @dragonwocky */
 
 /* @plugins
@@ -147,6 +147,18 @@ body.is-mobile.theme-dark {
 }
 .mod-left-split .workspace-tabs ~ .workspace-tabs {
   border-left: var(--tab-outline-width) solid var(--tab-outline-color);
+}
+
+/* tweak: remove border beneath active tab */
+.mod-top > .workspace-tab-header-container {
+  border-bottom: none;
+}
+.mod-top > .workspace-tab-header-container::before {
+  content: "";
+  width: 100%;
+  position: absolute;
+  border-bottom: var(--tab-outline-width) solid var(--tab-outline-color);
+  bottom: 0;
 }
 
 /* tweak: clip resize handles for seamless header */
