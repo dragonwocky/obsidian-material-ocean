@@ -1,4 +1,4 @@
-![](screenshot.png)
+![](thumbnail.png)
 
 **Material Ocean** is an [Obsidian](https://obsidian.md/) dark theme that combines
 navy blue undertones with pastel highlights for a pleasant visual experience on both
