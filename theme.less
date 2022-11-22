@@ -1,0 +1,656 @@
+/* obsidian-material-ocean v0.4.0
+   by @dragonwocky */
+
+// build: npx less theme.less > theme.css
+
+// --- COMPATIBILITY ---
+
+/* @plugins
+core:
+- audio-recorder
+- backlink
+- command-palette
+- daily-notes
+- editor-status
+- file-explorer
+- file-recovery
+- global-search
+- graph-view
+- markdown-importer
+- note-composer
+- open-with-default-app
+- outgoing-links
+- outline
+- page-preview
+- random-note
+- slash-commands
+- starred
+- switcher
+- tag-pane
+- templates
+- word-count
+- workspaces
+- zk-prefixer
+
+community:
+- calendar
+- obsidian-full-calendar
+- obsidian-dictionary-plugin
+- obsidian-livesync
+*/
+
+// --- COLOR SCHEME: css variables ---
+body.theme-dark,
+body.is-mobile.theme-dark {
+  color-scheme: dark;
+  --highlight-mix-blend-mode: lighten;
+  --mono-rgb-0: 0, 0, 0;
+  --mono-rgb-100: 255, 255, 255;
+
+  /* recommended accents: #ff475a, #82aaff */
+  --accent-h: 354;
+  --accent-s: 100%;
+  --accent-l: 64%;
+
+  --color-red-rgb: 255, 71, 90;
+  --color-red: rgb(var(--color-red-rgb));
+  --color-green-rgb: 163, 190, 140;
+  --color-green: rgb(var(--color-green-rgb));
+  --color-orange: #fde3c0;
+  --color-yellow: #ffcb6b;
+  --color-cyan: #89ddff;
+  --color-blue: #82aaff;
+  --color-purple: #c792ea;
+  --color-pink: #ffc0cb;
+
+  /* editor */
+  --color-base-00: #0f111a;
+  /* code blocks */
+  --color-base-10: #0b0d13;
+  /* nav + sidebar */
+  --color-base-20: #090b10;
+  /* inputs */
+  --color-base-25: #0b0d13;
+  /* dividing lines*/
+  --color-base-30: #1e2537;
+  /* hovered + selected buttons */
+  --color-base-35: #11131e;
+  /* box-shadows */
+  --color-base-40: #1e2537;
+  /* text-faint */
+  --color-base-50: #697086;
+  --color-base-60: #697086;
+  /* text-muted */
+  --color-base-70: #9093a2;
+  /* text-normal */
+  --color-base-100: #b6b7be;
+
+  --blockquote-color: var(--text-muted);
+  --h1-color: var(--text-accent);
+  --h2-color: var(--text-accent);
+  --h3-color: var(--text-accent);
+  --h4-color: var(--text-accent);
+  --h5-color: var(--text-accent);
+  --h6-color: var(--text-accent);
+  --link-color: var(--text-normal);
+  --link-color-hover: var(--text-muted);
+  --link-external-color: var(--text-normal);
+  --link-external-color-hover: var(--text-muted);
+  --link-unresolved-color: var(--text-normal);
+  --link-unresolved-decoration-color: var(--text-muted);
+
+  --list-marker-color: var(--text-muted);
+  --list-marker-color-collapsed: var(--text-muted);
+  --collapse-icon-color: var(--text-faint);
+  --collapse-icon-color-collapsed: var(--text-faint);
+
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: #00010a;
+  --scrollbar-active-thumb-bg: var(--color-accent);
+
+  --interactive-normal: var(--color-base-30);
+  --background-modifier-hover: var(--color-base-35);
+  --table-header-background: var(--background-modifier-hover);
+  --table-header-background-hover: var(--background-modifier-hover);
+  --titlebar-background: var(--background-secondary);
+  --titlebar-background-focused: var(--background-secondary);
+  --modal-background: var(--background-primary);
+
+  --text-highlight-bg: var(--text-accent);
+  .markdown-rendered mark,
+  .cm-s-obsidian span:is(.cm-formatting-highlight, .cm-highlight) {
+    color: var(--text-on-accent);
+  }
+
+  // --- COLOR SCHEME: syntax highlighting ---
+  code[class*="language-"],
+  .token.tag,
+  .token.parameter,
+  .token.selector,
+  .token.hexcode,
+  .token.attr-name,
+  .token.variable,
+  .cm-variable-2,
+  .cm-s-obsidian span.cm-error,
+  .cm-property,
+  .cm-variable,
+  .cm-atom {
+    color: var(--color-red);
+  }
+  .token.boolean,
+  .token.number,
+  .token.unit,
+  .token.constant,
+  .token.symbol,
+  .token.deleted,
+  .cm-number,
+  .cm-property.cm-string {
+    color: var(--color-orange);
+  }
+  .token.string,
+  .token.char,
+  .token.selector .id,
+  .token.attr-value,
+  .token.builtin,
+  .token.inserted,
+  .cm-builtin,
+  .cm-hmd-codeblock.cm-string {
+    color: var(--color-green);
+  }
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .token.pseudo-class,
+  .token.pseudo-element,
+  .language-css .token.string,
+  .style .token.string,
+  .cm-operator,
+  .cm-variable-3 {
+    color: var(--color-cyan);
+  }
+  .token.atrule,
+  .token.keyword,
+  .cm-keyword {
+    color: var(--color-purple);
+  }
+  .token.function,
+  .token.property,
+  .token.property-access,
+  .cm-def,
+  .cm-callee,
+  .cm-property,
+  .cm-string-2 {
+    color: var(--color-blue);
+  }
+  .token.selector .class,
+  .cm-qualifier,
+  .token.class-name,
+  .cm-type {
+    color: var(--color-yellow);
+  }
+  .token.regex,
+  .token.important {
+    color: var(--color-purple);
+  }
+  .token.operator,
+  .token.selector .combinator {
+    color: var(--code-normal);
+  }
+  .token.important,
+  .token.bold {
+    font-weight: bold;
+  }
+  .token.italic {
+    font-style: italic;
+  }
+  .token.entity {
+    cursor: help;
+  }
+
+  // --- FIX: balanced tag padding ---
+  --tag-padding-y: 0.23em;
+
+  // --- FIX: balanced callout padding ---
+  --callout-padding: var(--size-4-4) var(--size-4-4) var(--size-4-4) var(--size-4-5);
+  .callout .callout-title {
+    gap: var(--size-4-2);
+  }
+  .callout .callout-content > :last-child {
+    margin-bottom: var(--size-4-2) !important;
+  }
+
+  // --- FIX: tightened line spacing ---
+  .markdown-rendered .inline-title {
+    padding-bottom: 0;
+  }
+  .markdown-rendered blockquote > p + blockquote {
+    margin-top: calc(-0.5 * var(--font-ui-medium));
+  }
+  .markdown-rendered code[class*="language-"] {
+    line-height: var(--line-height-tight);
+  }
+  .markdown-preview-section {
+    & > :nth-child(2) ~ div {
+      overflow: visible;
+      max-width: 100%;
+      margin-block-start: var(--font-ui-medium);
+    }
+    & > div > :first-child {
+      margin-block-start: 0;
+    }
+    & > div > :last-child {
+      margin-block-end: 0;
+    }
+  }
+
+  // --- FIX: reduce top level list indent ----
+  .markdown-preview-section div:not(:is([class], [style], [id])) {
+    & > ol:not(:is([class], [style], [id])),
+    & > .has-list-bullet:not(.contains-task-list),
+    & > .has-list-bullet.contains-task-list {
+      padding-inline-start: calc((var(--size-4-5) + var(--size-4-6)) / 2);
+    }
+  }
+
+  // --- FIX: add margin to collapsed headings ---
+  .HyperMD-header .cm-fold-indicator.is-collapsed {
+    margin-bottom: var(--font-ui-medium);
+  }
+
+  // --- FIX: prevent overlap of language flair w/ code block content ---
+  .markdown-source-view.mod-cm6 .HyperMD-codeblock-begin {
+    padding-top: var(--font-ui-medium);
+  }
+
+  // --- FIX: better checkbox alignment ---
+  .markdown-source-view.mod-cm6 .task-list-label .task-list-item-checkbox {
+    margin: 0 2px 0 0;
+  }
+
+  // --- FIX: clip sidebar resize handles on collapse ---
+  .workspace-split.mod-left-split {
+    overflow: hidden;
+  }
+
+  // --- TWEAK: lucide window buttons (win/linux only) ---
+  --lucide-x: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'%3E%3C/line%3E%3Cline x1='6' y1='6' x2='18' y2='18'%3E%3C/line%3E%3C/svg%3E");
+  --lucide-minus: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
+  --lucide-maximize: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 3H5a2 2 0 0 0-2 2v3'%3E%3C/path%3E%3Cpath d='M21 8V5a2 2 0 0 0-2-2h-3'%3E%3C/path%3E%3Cpath d='M3 16v3a2 2 0 0 0 2 2h3'%3E%3C/path%3E%3Cpath d='M16 21h3a2 2 0 0 0 2-2v-3'%3E%3C/path%3E%3C/svg%3E");
+  &:is(.mod-linux, .mod-windows) .titlebar-button {
+    &:not(.mod-logo) {
+      padding: 0 var(--size-4-3);
+      svg {
+        -webkit-mask-size: cover;
+        background-color: var(--icon-color);
+        color: transparent;
+        width: var(--icon-s);
+        height: var(--icon-s);
+      }
+    }
+    &.mod-minimize svg {
+      -webkit-mask-image: var(--lucide-minus);
+    }
+    &.mod-maximize svg {
+      -webkit-mask-image: var(--lucide-maximize);
+    }
+    &.mod-close {
+      svg {
+        -webkit-mask-image: var(--lucide-x);
+      }
+      @media (hover: hover) {
+        &:hover svg {
+          background-color: var(--text-on-accent);
+        }
+      }
+    }
+  }
+
+  // --- TWEAK: accented top-left button (win/linux only) ---
+  &:is(.mod-linux, .mod-windows) {
+    .titlebar-button.mod-logo {
+      background: var(--color-accent);
+      color: var(--text-on-accent);
+    }
+    .workspace-ribbon.mod-left .sidebar-toggle-button {
+      background: var(--color-accent);
+      border-bottom-right-radius: var(--radius-m);
+      --background-modifier-hover: var(--color-accent-1);
+      .clickable-icon {
+        color: var(--text-on-accent);
+      }
+    }
+  }
+
+  // --- TWEAK: rounded top-left sidebar border ---
+  .workspace-ribbon.mod-left {
+    &,
+    &:before {
+      border-color: transparent;
+    }
+    &.is-collapsed {
+      & ~ .mod-root .workspace-leaf-content {
+        border-left: var(--tab-outline-width) solid var(--tab-outline-color);
+      }
+    }
+  }
+  .mod-left-split {
+    background: var(--titlebar-background);
+    .mod-top-left-space {
+      margin-top: -1px;
+      .workspace-leaf {
+        border-top: var(--tab-outline-width) solid var(--tab-outline-color);
+        border-left: var(--tab-outline-width) solid var(--tab-outline-color);
+        border-top-left-radius: var(--radius-m);
+      }
+      .workspace-tab-header-container {
+        border-color: transparent;
+      }
+    }
+    .workspace-tabs ~ .workspace-tabs {
+      border-left: var(--tab-outline-width) solid var(--tab-outline-color);
+    }
+  }
+
+  // --- TWEAK: force collapsed sidebar colour to match titlebar ---
+  .workspace-ribbon.mod-left.is-collapsed {
+    background: var(--titlebar-background);
+  }
+
+  // --- TWEAK: clipped resize handles
+  .workspace-split > .workspace-leaf-resize-handle {
+    clip: rect(calc(var(--header-height) - 1px), auto, auto, auto);
+  }
+
+  // --- TWEAK: right-aligned callout fold arrows ---
+  .callout .callout-fold {
+    margin-left: auto;
+    padding-right: 0;
+  }
+
+  // --- TWEAK: underlined headings ---
+  .markdown-rendered h1,
+  .markdown-rendered h2,
+  .markdown-rendered h3,
+  .markdown-rendered h4,
+  .markdown-rendered h5,
+  .markdown-rendered h6,
+  .HyperMD-header {
+    text-decoration: underline;
+    text-decoration-color: var(--hr-color);
+  }
+
+  // --- TWEAK: rounded images ---
+  .markdown-rendered img,
+  .markdown-source-view img {
+    border-radius: var(--size-4-1);
+  }
+
+  // --- TWEAK: full-width tables w/ scrollable overflows ---
+  .markdown-rendered table {
+    min-width: 100%;
+  }
+  .markdown-rendered.cm-table-widget {
+    overflow: auto;
+  }
+
+  // --- TWEAK: scrollable code block overflows ---
+  .markdown-rendered {
+    pre[class*="language-"] {
+      overflow-x: scroll;
+      white-space: pre;
+      code {
+        margin: var(--font-ui-smaller) 0;
+        overflow: unset;
+        white-space: pre;
+      }
+    }
+    .copy-code-button {
+      background-color: var(--background-modifier-hover);
+    }
+  }
+  .HyperMD-codeblock:not(.HyperMD-codeblock-begin) {
+    overflow: auto;
+    white-space: pre;
+  }
+
+  // --- TWEAK: rounded checkboxes ---
+  .HyperMD-task-line .task-list-item-checkbox[data-task],
+  .markdown-rendered .task-list-item[data-task] input[type="checkbox"] {
+    border-radius: 100%;
+  }
+
+  // --- TWEAK: grey out completed tasks ---
+  .HyperMD-task-line[data-task="x"],
+  .HyperMD-task-line[data-task="X"],
+  .markdown-rendered .task-list-item[data-task="x"],
+  .markdown-rendered .task-list-item[data-task="X"] {
+    text-decoration: none !important;
+    color: var(--text-muted) !important;
+  }
+
+  // --- CHECKBOX: '/' = incomplete/partial ---
+  .HyperMD-task-line .task-list-item-checkbox[data-task="/"]:checked,
+  .markdown-rendered .task-list-item[data-task="/"] input[type="checkbox"]:checked {
+    background-color: transparent;
+    overflow: hidden;
+    &:after {
+      -webkit-mask-image: none;
+      background-color: var(--checkbox-color);
+      width: 50%;
+    }
+  }
+
+  // --- CHECKBOX: '-' = cancelled ---
+  .HyperMD-task-line[data-task="-"],
+  .markdown-rendered .task-list-item[data-task="-"] {
+    text-decoration: line-through;
+    text-decoration-color: var(--text-muted);
+    color: var(--text-faint);
+  }
+  .HyperMD-task-line .task-list-item-checkbox[data-task="-"]:checked,
+  .markdown-rendered .task-list-item[data-task="-"] input[type="checkbox"]:checked {
+    background-color: var(--text-muted);
+    -webkit-mask-image: var(--lucide-minus);
+    -webkit-mask-size: cover;
+    &:after {
+      background: transparent;
+    }
+  }
+
+  // --- PLUGIN: calendar ---
+  #calendar-container .arrow {
+    padding: var(--size-2-2) var(--size-2-3);
+    border-radius: var(--clickable-icon-radius);
+  }
+  #calendar-container .reset-button {
+    margin: auto 0;
+    padding: var(--size-2-2) var(--size-2-3) var(--size-2-1) var(--size-2-3);
+  }
+  @media (hover: hover) {
+    #calendar-container .arrow:hover,
+    #calendar-container .reset-button:hover {
+      opacity: var(--icon-opacity-hover);
+      color: var(--icon-color-hover);
+      background-color: var(--background-modifier-hover);
+    }
+  }
+  #calendar-container .day.adjacent-month {
+    opacity: 1;
+    color: var(--text-faint);
+  }
+  #calendar-container .day.has-note.active .dot.filled {
+    fill: var(--text-on-accent);
+  }
+
+  // --- PLUGIN: obsidian-full-calendar ---
+  // -> add calendar icon to tab
+  --lucide-calendar-days: url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3Cpath d='M8 14h.01'%3E%3C/path%3E%3Cpath d='M12 14h.01'%3E%3C/path%3E%3Cpath d='M16 14h.01'%3E%3C/path%3E%3Cpath d='M8 18h.01'%3E%3C/path%3E%3Cpath d='M12 18h.01'%3E%3C/path%3E%3Cpath d='M16 18h.01'%3E%3C/path%3E%3C/svg%3E");
+  [data-type="full-calendar-view"] .workspace-tab-header-inner-icon svg {
+    -webkit-mask-size: cover;
+    -webkit-mask-image: var(--lucide-calendar-days);
+    background-color: var(--icon-color);
+    color: transparent;
+    width: 1em;
+    height: 1em;
+  }
+  // -> adjust colours and spacing
+  .fc {
+    --fc-now-indicator-color: var(--color-accent);
+    --fc-small-font-size: var(--font-ui-small);
+    --fc-border-color: var(--interactive-normal);
+    --fc-button-bg-color: var(--color-base-20);
+    --fc-button-border-color: transparent;
+    --fc-neutral-bg-color: var(--color-base-20);
+    table {
+      font-size: var(--font-ui-small);
+    }
+    .fc-scrollgrid {
+      border-radius: var(--radius-s);
+    }
+    .fc-toolbar-title {
+      font-size: var(--font-ui-large);
+    }
+    .fc-col-header-cell-cushion {
+      text-decoration: none;
+      padding: var(--size-2-3) var(--size-4-1);
+    }
+    .fc-list-day-text,
+    .fc-list-day-side-text,
+    .fc-daygrid-day-number {
+      text-decoration: none;
+    }
+    .fc-daygrid-day-frame {
+      padding: var(--size-2-1);
+    }
+    .fc-button {
+      text-transform: capitalize;
+      font-size: var(--font-ui-medium);
+      padding: var(--size-4-1) var(--size-4-3);
+      &:disabled {
+        opacity: 1;
+        color: var(--text-muted);
+      }
+    }
+    .fc-button-primary {
+      &:focus,
+      &:active {
+        color: var(--text-on-accent) !important;
+        box-shadow: 0 0 0 0.2rem var(--color-accent);
+      }
+      &:not(.fc-button-active) {
+        box-shadow: var(--input-shadow);
+        --input-shadow: inset 0 0.5px 0.75px 0.5px rgba(255, 255, 255, 0.09),
+          0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 1px 1.5px 0 rgba(0, 0, 0, 0.1),
+          0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 0 0 0 transparent;
+      }
+      &:not(:disabled):is(.fc-button-active, :active):focus {
+        box-shadow: none;
+      }
+    }
+  }
+  // -> style inputs and checkboxes
+  [class="modal"] .modal-content > form {
+    select#calendar {
+      padding: 0 0.8em;
+    }
+    label:is([for="allDay"], [for="recurring"]) {
+      margin-right: 3px;
+    }
+    :is(#allDay, #recurring)[type="checkbox"] {
+      border-radius: 100%;
+      top: 1.5px;
+    }
+    :is(#date, #startDate, #endDate)[type="date"],
+    :is(#startTime, #endTime)[type="time"] {
+      appearance: none;
+      -webkit-appearance: none;
+      box-sizing: border-box;
+      font-family: inherit;
+      font-size: var(--font-ui-small);
+      font-weight: var(--input-font-weight);
+      line-height: var(--line-height-tight);
+      height: var(--input-height);
+      max-width: 100%;
+      padding: 0 0.8em;
+      margin: 0.4em 0;
+      background-color: var(--interactive-normal);
+      box-shadow: var(--input-shadow);
+      color: var(--text-normal);
+      border-radius: var(--input-radius);
+      border: 0;
+    }
+    :is(#startTime, #endTime)[type="time"] {
+      width: 9em;
+    }
+    :is(#date, #startDate, #endDate)[type="date"] {
+      width: 9.6em;
+    }
+    :is(#startDate, #endDate)[type="date"],
+    :is(#date[type="date"]):not(:first-child),
+    :is(#startTime, #endTime)[type="time"]:not(:first-child) {
+      margin-inline-start: 0.6em;
+    }
+    :is(#date, #startDate, #endDate)[type="date"]:not(:last-child),
+    :is(#startTime, #endTime)[type="time"]:not(:last-child) {
+      margin-inline-end: 0.6em;
+    }
+    & > div > button[style^="margin-left: 0.25rem;"]:first-child {
+      margin-left: 0 !important;
+    }
+  }
+  // -> make modal close clickable on mobile
+  .is-mobile [class="modal"] .modal-content > div:first-child > p[style="float: right;"] {
+    float: unset !important;
+    margin-bottom: 0;
+  }
+  .is-mobile [class="modal"] .modal-close-button {
+    z-index: 999;
+  }
+}
+
+// --- PLUGIN: obsidian-dictionary-plugin ---
+.dictionary-view-content.view-content {
+  padding-top: 0;
+}
+.dictionary-view-content .nav-buttons-container {
+  padding: var(--size-4-2) var(--size-4-2) var(--size-4-3) var(--size-4-2);
+}
+.dictionary-view-content .nav-action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--size-2-2) var(--size-2-3);
+  border-radius: var(--clickable-icon-radius);
+  color: var(--icon-color);
+  opacity: var(--icon-opacity);
+  transition: opacity 0.15s ease-in-out;
+}
+@media (hover: hover) {
+  .dictionary-view-content .nav-action-button:hover {
+    opacity: var(--icon-opacity-hover);
+    color: var(--icon-color-hover);
+    background-color: var(--background-modifier-hover);
+  }
+}
+
+// --- PLUGIN: obsidian-livesync ---
+.sls-setting {
+  .op-warn-info {
+    padding: var(--size-4-3);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-s);
+    &:before {
+      color: var(--color-accent);
+      margin-bottom: var(--size-4-1);
+    }
+  }
+  .sls-btn-right,
+  .sls-btn-left {
+    padding: var(--size-4-1) var(--size-4-3);
+  }
+}
+.modal-content > .op-scrollable.op-pre br {
+  content: "";
+  display: block;
+  height: 0.4em;
+}
