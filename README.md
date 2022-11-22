@@ -66,6 +66,10 @@ plugins to ensure compatibility and fix minor display issues:
 
 This theme is provided as-is and is designed for personal use. It has not
 been thoroughly tested and may not work as expected with all future updates.
-
 If you notice something looks wrong, please open a bug report or pull request
 so it can be fixed.
+
+I did not create the original Material Ocean colour palette. Full credit for that
+goes to the original [Material Theme](https://material-theme.site/). I have selected
+colours from the original theme, adjusted them, and added additional colours for
+the purposes of adapting the theme to work with other apps e.g. Obsidian and Notion.
