@@ -8,8 +8,6 @@ mobile and desktop. The recommended accent colours for this theme are either `#f
 
 This theme is also available for [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme), [Notion](https://notion-enhancer.github.io), and [a variety of other apps and desktop environments](https://github.com/material-ocean/Material-Ocean).
 
-## Configuration
-
 ## Installation
 
 ### Obsidian Marketplace (Coming Soon)
@@ -65,9 +63,9 @@ plugins to ensure compatibility and fix minor display issues:
 ## Disclaimer
 
 This theme is provided as-is and is designed for personal use. It has not
-been thoroughly tested and may not work as expected with all future updates.
-If you notice something looks wrong, please open a bug report or pull request
-so it can be fixed.
+been tested on all platforms or with all features and may not work as expected
+with all future updates. If you notice something looks wrong, please open a bug
+report or pull request so it can be fixed.
 
 I did not create the original Material Ocean colour palette. Full credit for that
 goes to the original [Material Theme](https://material-theme.site/). I have selected
