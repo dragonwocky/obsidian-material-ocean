@@ -10,7 +10,7 @@ This theme is also available for [Visual Studio Code](https://marketplace.visual
 
 ## Installation
 
-### Obsidian Marketplace (Coming Soon)
+### Obsidian Marketplace
 
 1. In Obsidian, navigate to **Settings** → **Appearance**.
 2. Press the **Manage** button beside the **Themes** option.
